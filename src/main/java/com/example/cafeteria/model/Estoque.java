@@ -1,11 +1,14 @@
 package com.example.cafeteria.model;
 
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -38,6 +41,10 @@ public class Estoque {
 	
 	@NotNull
 	private int estoque_atual;
+	
+	@OneToMany(mappedBy="Produto", cascade=CascadeType.ALL)
+	private List<Produto> produto;
+
 
 	public long getId() {
 		return id;
@@ -95,7 +102,13 @@ public class Estoque {
 		this.estoque_atual = estoque_atual;
 	}
 	
-	
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
+	}
 	
 
 }
