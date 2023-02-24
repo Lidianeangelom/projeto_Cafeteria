@@ -18,52 +18,52 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.example.cafeteria.repository.EstoqueRepository;
+import com.example.cafeteria.repository.CarrinhoRepository;
 
 import jakarta.validation.Valid;
 
-import com.example.cafeteria.model.Estoque;
+import com.example.cafeteria.model.Carrinho;
 
 @RestController
-@RequestMapping("/estoque")
+@RequestMapping("/carrinho")
 @CrossOrigin(origins="*",allowedHeaders="*")
-public class EstoqueController {
+public class CarrinhoController {
 	
 	@Autowired
-	private EstoqueRepository estoqueRepository;
+	private CarrinhoRepository carrinhoRepository;
 	
 	@GetMapping
-	public ResponseEntity <List<Estoque>> getAll(Long id){
-		return ResponseEntity.ok(estoqueRepository.findAll());
+	public ResponseEntity <List<Carrinho>> getAll(Long id){
+		return ResponseEntity.ok(carrinhoRepository.findAll());
 	}
 	
 	@GetMapping ("/{id}") 
-	public ResponseEntity <Estoque> getById(@PathVariable Long id){
-		return estoqueRepository.findById(id)
+	public ResponseEntity <Carrinho> getById(@PathVariable Long id){
+		return carrinhoRepository.findById(id)
 				.map(resposta->ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@PostMapping
-	public ResponseEntity<Estoque> post(@Valid @RequestBody Estoque estoque) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(estoqueRepository.save(estoque));
+	public ResponseEntity<Carrinho> post(@Valid @RequestBody Carrinho carrinho) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(carrinhoRepository.save(carrinho));
 	}
 
 	@PutMapping
-	public ResponseEntity<Estoque> put(@Valid @RequestBody Estoque estoque) {
-		return estoqueRepository.findById(estoque.getId())
-				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(estoqueRepository.save(estoque)))
+	public ResponseEntity<Carrinho> put(@Valid @RequestBody Carrinho carrinho) {
+		return carrinhoRepository.findById(carrinho.getId())
+				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(carrinhoRepository.save(carrinho)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		Optional<Estoque> estoque = estoqueRepository.findById(id);
-		if (estoque.isEmpty())
+		Optional<Carrinho> carrinho = carrinhoRepository.findById(id);
+		if (carrinho.isEmpty())
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 
-		estoqueRepository.deleteById(id);
+		carrinhoRepository.deleteById(id);
 	}
 	
 	
