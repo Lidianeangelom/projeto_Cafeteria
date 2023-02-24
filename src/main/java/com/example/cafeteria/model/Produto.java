@@ -2,10 +2,13 @@ package com.example.cafeteria.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -51,6 +54,10 @@ public class Produto {
 	@NotNull
 	@Size(min=5)
 	private String foto;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private long estoque;
 
 	public long getId() {
 		return id;
@@ -130,6 +137,14 @@ public class Produto {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public long getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque_id(long estoque) {
+		this.estoque = estoque;
 	}
 	
 	
