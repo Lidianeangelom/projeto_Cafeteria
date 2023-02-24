@@ -14,6 +14,7 @@ public class UsuarioCliente {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private long id;
 	
 	@NotNull
@@ -50,6 +51,10 @@ public class UsuarioCliente {
 	@NotNull
 	@Size(min=5)
 	private String endereco;
+	
+	@NotNull
+	@Size(min=5)
+	private String cep_cliente;
 	
 	
 	public long getId() {
@@ -130,6 +135,14 @@ public class UsuarioCliente {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public String getCep_cliente() {
+		return cep_cliente;
+	}
+
+	public void setCep_cliente(String cep_cliente) {
+		this.cep_cliente = cep_cliente;
 	}
 
 }

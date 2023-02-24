@@ -34,9 +34,6 @@ public class Produto {
 	private String categoria;
 	
 	@NotNull
-	private int quantidade;
-	
-	@NotNull
 	@Size(min=5)
 	private String descricao;
 	
@@ -50,6 +47,8 @@ public class Produto {
 	@NotNull
 	@Size(min=5)
 	private String fornecedor;
+	
+	private boolean disponivel=true;
 	
 	@NotNull
 	@Size(min=5)
@@ -91,13 +90,6 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	public int getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
 
 	public String getDescricao() {
 		return descricao;
@@ -145,6 +137,14 @@ public class Produto {
 
 	public void setEstoque_id(long estoque) {
 		this.estoque = estoque;
+	}
+
+	public boolean isDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(boolean disponivel) {
+		this.disponivel = disponivel;
 	}
 	
 	
