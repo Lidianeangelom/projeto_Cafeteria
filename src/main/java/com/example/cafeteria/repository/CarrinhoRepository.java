@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.example.cafeteria.model.Estoque;
+import com.example.cafeteria.model.Carrinho;
 
 
-public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
-	public List<Estoque> findById(@Param("id") String id);
+public interface CarrinhoRepository extends JpaRepository<Carrinho, Long> {
+	public List<Carrinho> findById(@Param("id") String id);
 }
