@@ -2,14 +2,12 @@ package com.example.cafeteria.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,13 +16,11 @@ public class Carrinho {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@OneToMany(mappedBy="produto", cascade=CascadeType.ALL)
-	@JsonIgnoreProperties("produto")
+	
 	private long id;
 	
-	@OneToMany(mappedBy="usuario", cascade=CascadeType.ALL)
-	private UsuarioCliente cliente;
-	
+	@Column
+	@ElementCollection(targetClass=Integer.class)	
 	private List<Produto> produto;
 	
 	private int quantidade;
@@ -43,13 +39,6 @@ public class Carrinho {
 		this.id = id;
 	}
 
-	public UsuarioCliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(UsuarioCliente cliente) {
-		this.cliente = cliente;
-	}
 
 	public List<Produto> getProduto() {
 		return produto;

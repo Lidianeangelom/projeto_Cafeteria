@@ -145,4 +145,8 @@ public class UsuarioCliente {
 		this.cep_cliente = cep_cliente;
 	}
 
+	
+
+	
+
 }

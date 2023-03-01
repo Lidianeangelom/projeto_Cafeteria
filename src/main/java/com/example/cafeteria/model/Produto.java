@@ -2,13 +2,11 @@ package com.example.cafeteria.model;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -21,41 +19,39 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=5)
 	private String tipo;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=5)
 	private String nome;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=1)
 	private String categoria;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=5)
 	private String descricao;
 	
-	@NotNull
+	//@NotNull
 	private float preco;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=4)
 	private Date data_validade;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=5)
 	private String fornecedor;
 	
-	private boolean disponivel=true;
+	//private boolean disponivel=true;
 	
-	@NotNull
+	//@NotNull
 	@Size(min=5)
 	private String foto;
 	
-	@ManyToOne
-	@JsonIgnoreProperties("produto")
 	private long estoque;
 
 	public long getId() {
@@ -139,13 +135,13 @@ public class Produto {
 		this.estoque = estoque;
 	}
 
-	public boolean isDisponivel() {
+	/*public boolean isDisponivel() {
 		return disponivel;
 	}
 
 	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
-	}
+	}*/
 	
 	
 	
