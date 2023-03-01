@@ -30,7 +30,7 @@ import jakarta.validation.Valid;
 public class ProdutoController {
 	@Autowired ProdutoRepository produtoRepository;
 	
-	@GetMapping ("/all")
+	@GetMapping
 	public ResponseEntity <List<Produto>> getAllProduto(){
 		return ResponseEntity.ok(produtoRepository.findAll());
 	}
@@ -43,29 +43,12 @@ public class ProdutoController {
 	}
 	
 	
-	@GetMapping("/nome/{usuario}") 
-	public ResponseEntity<List<Produto>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(produtoRepository.findByNome(nome));
-		
-	}
-	
-	@GetMapping("/tipo/{tipo}") 
-	public ResponseEntity<List<Produto>> getByTipo(@PathVariable String tipo) {
-		return ResponseEntity.ok(produtoRepository.findByNome(tipo));
-		
-	}
-	
 	@GetMapping("/categoria/{categoria}") 
-	public ResponseEntity<List<Produto>> getByCategoria(@PathVariable String categoria) {
-		return ResponseEntity.ok(produtoRepository.findByNome(categoria));
+	public ResponseEntity<Optional<Produto>> getByCategoria(@PathVariable String categoria) {
+		return ResponseEntity.ok(produtoRepository.findByCategoria(categoria));
 		
 	}
 	
-	@GetMapping("/preco/{preco}") //testar//
-	public ResponseEntity<Object> getByPreco(@PathVariable Float preco) {
-		return ResponseEntity.ok(produtoRepository.findByPreco(preco));
-		
-	}
 	
 	@PostMapping
 	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto){
