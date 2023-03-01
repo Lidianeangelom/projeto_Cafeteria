@@ -1,4 +1,7 @@
-<h1>PIZZARIA_QUE_DELICIA<h1>**O Desafio**
+<h1>Projeto Cafeteria<h1>
+ <h4>Projeto realizado no bootcamp da McKinsey<h4>
+  
+ <h4>**O Desafio**<h4>
 
 Este desafio consiste em desenvolver uma aplicação para gerenciar um carrinho de compras de uma cafeteria fictícia, com as seguintes funcionalidades:
 
